@@ -11,3 +11,12 @@ Stuff...
 ```It can do stuff```
 
 Looks like this will become the readme
+
+
+`/src/...`\
+- Dokumentation
+- Angebot
+- ...
+- In LaTeX
+`/renders/...`
+Same as above but rendered as PDF
