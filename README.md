@@ -17,6 +17,9 @@ Looks like this will become the readme
 - Dokumentation
 - Angebot
 - ...
-- In LaTeX
+- In LaTeX  
+
+
 `/renders/...`
-Same as above but rendered as PDF
+
+- Same as above but rendered as PDF
