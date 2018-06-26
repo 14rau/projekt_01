@@ -45,6 +45,9 @@ backgroundcolor=\color{yellow!10}
 	
 	\vspace{2cm}
 	{\Large\itshape Christian Rudolph, Artem Zheleznyakov, Felix Schulz, Patrick Rau\par}
+    \vspace{5cm}
+    \includegraphics[width=0.15\textwidth]{idk-tower.png}\par\vspace{0.15cm}
+    \textsc{IDK-Company}
 	\vfill
 	{\large \today\par}
 \end{titlepage}
@@ -75,8 +78,26 @@ Aus den Kundenwünschen konnten drei Angebote erstellt werden.
 In diesem Teil wird die Implementierung der Geräte Datenbank behandelt. Hinzu kommen die entsprechenden SQL-Statements die benötigt werden um die entsprechende Datenbank zu erstellen, wie zudem die entsprechenden SELECT Statements um Daten aus der Datenbank abzufragen. Am Ende dieses Abschnitts werden außerdem die Probleme, die beim Erstellen der Statements aufgetreten sind, genauer erläutert.
 \newpage
 \subsection{Generierung der Datenbank}
+ Um unsere Datenbank zu erstellen wurde ein ERD entworfen und verwendet um die Datenbank zu generieren. Siehe Abbildung~\ref{fig:erdDatabase}
+Nun wird der Aufbau der Datenbank beschrieben, welche aus dem SQL-Statement (siehe Abbildung~\ref{fig:generateSql}).
+In Zeile 1 erstellen wir eine Datenbank mit dem Namen \textsc{device\_management}. Nun werden mehrere Tabellen erstellt die wir benutzen wollen (siehe Zeilen 5, 9, 15, 19, 30, 36, 40, 47). Als Tabellen wurden \textit{component\_type}, \textit{seal}, \textit{manufacturer}, \textit{product\_designation}, \textit{special\_requirements}, \textit{product\_seal} und \textit{product\_designation} gewählt.\newline
+\newline
+Die Entscheidungen der Datentypen sind großteils trivial, jedoch wurde die Entscheidung getroffen den Preis in Cent anzugeben.
+Der Grund für die Entscheidung den Preis in Cent anzugeben ist, dass es somit weit einfacher und fehlerfreier ist Berechnungen durchzuführen. Double wurde nicht gewählt, da es zu Präzisionsproblemen kommen kann die bereits bei elementaren Rechnungen auftreten könnten.
+
+
+
+\subsection{Datenbankabfragen}
+\newpage
+\section{Anhang / Abbildungen}
+\begin{figure}[htp]
+\caption{ERD zur Datenbank}
+\label{fig:erdDatabase}
+\includegraphics[width=1\textwidth]{ERD.png}\par\vspace{1cm}
+\end{figure}
 \begin{figure}[!htbp]
 \caption{SQL-Statement zum Generieren der Datenbank}
+\label{fig:generateSql}
 \begin{lstlisting}
 CREATE DATABASE IF NOT EXISTS device_management;
 
@@ -132,16 +153,6 @@ FOREIGN KEY(requirement_id) REFERENCES special_requirements(id),
 PRIMARY KEY(product_id,requirement_id));
 \end{lstlisting}
 \end{figure}
-Der Grund für die Entscheidung den Preis in Cent anzugeben ist, dass es somit weit einfacher und Fehlerfreier ist Berechnungen durchzuführen. Die Entscheidung gegen Double ist durch mögliche Präzisionsprobleme zu erklären, die bereits bei elementaren Rechnungen auftreten könnten. Ein entsprechendes ERD-Diagram ist im Anhang zu finden (TODO).
-Um unsere Datenbank zu erstellen wurde das folgende ERD entworfen und verwendet um die Datenbank zu generieren.
-
-\begin{figure}[htp]
-\caption{ERD zur Datenbank}
-\includegraphics[width=1\textwidth]{ERD.png}\par\vspace{1cm}
-\end{figure}
-
-\subsection{Datenbankabfragen}
-
 \begin{figure}[!h]
 \centering
 \caption{
@@ -230,7 +241,6 @@ SELECT name, count(name) FROM product
 GROUP BY name;
 \end{lstlisting}
 \end{figure}
-
-
+\newpage
 \end{document}
 
