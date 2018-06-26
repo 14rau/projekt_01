@@ -5,8 +5,8 @@ ORDER BY type_id, price ;
 
 --Ausgabe aller Komp. ohne Ergonomiemerkmale
 
-SELECT product_name, performance, price FROM product_designation ALIAS p
-LEFT JOIN product_requirement ALIAS pr ON p.id = pr.product_id
+SELECT product_name, performance, price FROM product_designation AS p
+LEFT JOIN product_requirement AS pr ON p.id = pr.product_id
 WHERE pr.product_id IS NULL;
 
 --ausgabe der teuersten, preiswertesten und durchschnittlichen preises für einen Komponententyp
