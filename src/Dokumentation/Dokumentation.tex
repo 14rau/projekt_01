@@ -8,6 +8,7 @@
 \usepackage{color}
 \pagenumbering{gobble}
 \usepackage{eurosym}
+\usepackage{xcolor}
 
 
 %% Sets page size and margins
@@ -36,6 +37,7 @@
 	{\large \today\par}
 \end{titlepage}
 \tableofcontents
+\listoffigures
 \newpage
 \begin{abstract}
 Im Folgenden wird dem Vorgang der Erstellung eines Angebotes beschrieben. Der Fokus liegt hierbei auf dem Einsatz eines IT-Systems im Logistikbereiches der Baufuchs GmbH. Dabei beschäftigt sich dieser Artikel mit der implementierung einer Datenbank, der Erstellung von Angeboten, einem Kundengespräch wie auch die Erstellung eines englisch- und deutschsprachigen Informationsblattes.
@@ -51,6 +53,172 @@ Optional wird eine Software zur Visualisierung als Demo angeboten.
 Um eine optimale Lösungsfindung zu garantieren werden zwei Kundengespräche durchgeführt. Im ersten Gespräch werden die Kundenwünsche aufgenommen und im Zweiten werden Angebote präsentiert und diese diskutiert. Aus dem Ergebnis beider resultiert das für den Kunden zugeschnittene Angebot. 
 \subsection{Kundenwünsche}
 \subsection{Resultierendes Angebot}
+\section{Datenbank zur Geräteverwaltung}
+In diesem Teil wird die Implementierung der Geräte Datenbank behandelt. Hinzu kommen die entsprechenden SQL-Statements die benötigt werden um die entsprechende Datenbank zu erstellen, wie zudem die entsprechenden SELECT Statements um Daten aus der Datenbank abzufragen. Am Ende dieses Abschnitts werden außerdem die Probleme, die beim Erstellen der Statements aufgetreten sind, genauer erläutert.
+\newpage
+\subsection{Generierung der Datenbank}
+
+
+\lstset{
+language=SQL,
+basicstyle=\ttfamily,
+keywordstyle=\color{violet},
+commentstyle=\color{gray},
+breaklines,
+frame=single,
+numbers=left,
+backgroundcolor=\color{yellow!10}
+}
+\begin{figure}[!h]
+\centering
+\caption{SQL-Statement zum Generieren der Datenbank}
+\begin{lstlisting}
+CREATE DATABASE IF NOT EXISTS device_management;
+
+USE device_management;
+
+CREATE TABLE IF NOT EXISTS component_type(
+id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+type VARCHAR(255));
+
+CREATE TABLE IF NOT EXISTS seal(
+id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+name VARCHAR(255),
+criteria VARCHAR(255),
+boundaries VARCHAR(255));
+
+CREATE TABLE IF NOT EXISTS manufacturer(
+id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+name VARCHAR(255));
+
+CREATE TABLE IF NOT EXISTS product_designation(
+id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+product_name VARCHAR(255),
+-- price in cent
+price INTEGER, 
+performance VARCHAR(255),
+type_id INTEGER,
+manufacturer_id INTEGER,
+FOREIGN KEY(type_id) REFERENCES component_type(id),
+FOREIGN KEY(manufacturer_id) REFERENCES manufacturer(id));
+
+CREATE TABLE IF NOT EXISTS product(
+id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+location VARCHAR(255),
+designation_id INTEGER,
+FOREIGN KEY(designation_id) REFERENCES product_designation(id));
+
+CREATE TABLE IF NOT EXISTS special_requirements(
+id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+requirement VARCHAR(255));
+
+CREATE TABLE IF NOT EXISTS product_seal(
+product_id INTEGER NOT NULL, 
+seal_id INTEGER NOT NULL,
+FOREIGN KEY(product_id) REFERENCES product_designation(id),
+FOREIGN KEY(seal_id) REFERENCES seal(id),
+PRIMARY KEY(product_id,seal_id));
+
+CREATE TABLE IF NOT EXISTS product_requirements(
+product_id INTEGER NOT NULL, 
+requirement_id INTEGER NOT NULL,
+FOREIGN KEY(product_id) REFERENCES product_designation(id),
+FOREIGN KEY(requirement_id) REFERENCES special_requirements(id),
+PRIMARY KEY(product_id,requirement_id));
+\end{lstlisting}
+\end{figure}
+Der Grund für die Entscheidung den Preis in Cent anzugeben ist, dass es somit weit einfacher und Fehlerfreier ist Berechnungen durchzuführen. Die Entscheidung gegen Double ist durch mögliche Präzisionsprobleme zu erklären, die bereits bei elementaren Rechnungen auftreten könnten. Ein entsprechendes ERD-Diagram ist im Anhang zu finden (TODO).
+\subsection{Datenbankabfragen}
+
+\begin{figure}[!h]
+\centering
+\caption{
+Ausgabe aller Komponenten mit Leistungsmerkmalen sortiert nach Art und dann nach Preis
+}
+\begin{lstlisting}
+SELECT product_name, performance, price FROM product_designation
+ORDER BY type_id, price;
+\end{lstlisting}
+\end{figure}
+\begin{figure}[!h]
+\centering
+\caption{Ausgabe aller Komp. ohne Ergonomiemerkmale}
+\begin{lstlisting}
+SELECT product_name, performance, price FROM product_designation AS p
+LEFT JOIN product_requirement AS pr ON p.id = pr.product_id
+WHERE pr.product_id IS NULL;
+\end{lstlisting}
+\end{figure}
+\begin{figure}[!h]
+\centering
+\caption{Ausgabe der teuersten, preiswertesten und durchschnittlichen Preises für einen Komponententyp}
+\begin{lstlisting}
+SELECT product_name, price FROM product_designation
+WHERE type_id = (SELECT id FROM component_type WHERE type = [component_type])
+ORDER BY price DESC 
+LIMIT 1 ;
+
+SELECT product_name, price FROM product_designation
+WHERE type_id = (SELECT id FROM component_type WHERE type = [component_type])
+ORDER BY price ASC 
+LIMIT 1 ;
+
+SELECT AVG(price) FROM product_designation
+WHERE type_id = (SELECT id FROM component_type WHERE type = [component_type]);
+\end{lstlisting}
+\end{figure}
+\begin{figure}[!h]
+\centering
+
+\caption{Gesamtübersicht aller Gütesiegel}
+\begin{lstlisting}
+SELECT name, criteria, boundaries FROM seal;
+\end{lstlisting}
+\end{figure}
+\begin{figure}[!h]
+\caption{Einzelpreis ändern}
+\begin{lstlisting}
+UPDATE product_designation
+  SET price = [new_price]
+  WHERE id = [product_id];
+\end{lstlisting}
+\end{figure}
+\begin{figure}[!h]
+\caption{Tablet-location Suche}
+\begin{lstlisting}
+SELECT location FROM product
+WHERE id = [product_id];
+\end{lstlisting}
+\end{figure}
+\begin{figure}[!h]
+\caption{Alle Produkte eines Herstellers}
+\begin{lstlisting}
+SELECT product_name FROM product_designation
+WHERE type_id =(SELECT id FROM component_type WHERE name = [manufacturer_name]);
+\end{lstlisting}
+\end{figure}
+\begin{figure}[!h]
+\caption{Alle Produkte einer Komponentenart}
+\begin{lstlisting}
+SELECT product_name FROM product_designation
+WHERE manufacturer_id =(SELECT id FROM manufacturer WHERE name = [component_type]);
+\end{lstlisting}
+\end{figure}
+\begin{figure}[!h]
+\caption{Produkte mit best. Siegel}
+\begin{lstlisting}
+SELECT product_name FROM product_designation
+WHERE seal_id =(SELECT id FROM seal WHERE name = [seal_name]);
+\end{lstlisting}
+\end{figure}
+\begin{figure}[!h]
+\caption{Anzahl des Bestandes aller Komponenten}
+\begin{lstlisting}
+SELECT name, count(name) FROM product 
+GROUP BY name;
+\end{lstlisting}
+\end{figure}
+
 
 \end{document}
 
