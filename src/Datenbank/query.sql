@@ -32,6 +32,32 @@ SELECT name, criteria, boundaries FROM seal;
 
 UPDATE product_designation
   SET price = [new_price]
-  WHERE id = [product_id]
+  WHERE id = [product_id];
+
+--Tablet-location Suche
+
+SELECT location FROM product
+WHERE id = [product_id];
+
+--Alle Produkte eines Herstellers
+
+SELECT product_name FROM product_designation
+WHERE type_id =(SELECT id FROM component_type WHERE name = [manufacturer_name]);
+
+--Alle Produkte einer Komponentenart
+
+SELECT product_name FROM product_designation
+WHERE manufacturer_id =(SELECT id FROM manufacturer WHERE name = [component_type]);
+
+--Produkte mit best. Siegel
+
+SELECT product_name FROM product_designation
+WHERE seal_id =(SELECT id FROM seal WHERE name = [seal_name]);
+
+--Anzahl des Bestandes aller Komponenten
+
+SELECT name, count(name) FROM product 
+GROUP BY name;
+
 
 
