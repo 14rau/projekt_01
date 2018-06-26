@@ -19,6 +19,18 @@
 \usepackage{graphicx}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage[colorlinks=true, allcolors=black]{hyperref}
+
+\lstset{
+language=SQL,
+basicstyle=\ttfamily,
+keywordstyle=\color{violet},
+commentstyle=\color{gray},
+breaklines,
+frame=single,
+numbers=left,
+backgroundcolor=\color{yellow!10}
+}
+
 \begin{document}
 \begin{titlepage}
 	\centering
@@ -52,25 +64,18 @@ Optional wird eine Software zur Visualisierung als Demo angeboten.
 \section{Kundengespräch}
 Um eine optimale Lösungsfindung zu garantieren werden zwei Kundengespräche durchgeführt. Im ersten Gespräch werden die Kundenwünsche aufgenommen und im Zweiten werden Angebote präsentiert und diese diskutiert. Aus dem Ergebnis beider resultiert das für den Kunden zugeschnittene Angebot. 
 \subsection{Kundenwünsche}
+Das Lager befindet sich im Geschäft auf den Regalen. Dementsprechend kommt es daher zu besonderen Prioritäten.\newline
+Aus dem Gespräch konnte die hohe Priorisierung der Akkulaufzeit, wie auch eine erhöhte Priorität des Tabletdesigns festgestellt werden. Das Design ist für den Kunden in sofern relevant, da es durchaus das Unternehmen widerspiegelt. Durch den besonderen Aufbau des Geschäfts ist es nötig, dass das Betriebsystem  von jedem Kunden ohne weitere Probleme bedient werden kann. Die Kamera ist in sofern wichtig, da QR-Codes ohne Probleme eingescannt werden müssen. Kosten sind für den Kunden nicht relevant.
+Aus dem Gespräch resultierte ebenfalls, dass kein weiteres Gespräch von nöten sein wird.
 \subsection{Resultierendes Angebot}
+Aus den Kundenwünschen konnten drei Angebote erstellt werden.
+
 \section{Datenbank zur Geräteverwaltung}
+
 In diesem Teil wird die Implementierung der Geräte Datenbank behandelt. Hinzu kommen die entsprechenden SQL-Statements die benötigt werden um die entsprechende Datenbank zu erstellen, wie zudem die entsprechenden SELECT Statements um Daten aus der Datenbank abzufragen. Am Ende dieses Abschnitts werden außerdem die Probleme, die beim Erstellen der Statements aufgetreten sind, genauer erläutert.
 \newpage
 \subsection{Generierung der Datenbank}
-
-
-\lstset{
-language=SQL,
-basicstyle=\ttfamily,
-keywordstyle=\color{violet},
-commentstyle=\color{gray},
-breaklines,
-frame=single,
-numbers=left,
-backgroundcolor=\color{yellow!10}
-}
-\begin{figure}[!h]
-\centering
+\begin{figure}[!htbp]
 \caption{SQL-Statement zum Generieren der Datenbank}
 \begin{lstlisting}
 CREATE DATABASE IF NOT EXISTS device_management;
@@ -128,6 +133,13 @@ PRIMARY KEY(product_id,requirement_id));
 \end{lstlisting}
 \end{figure}
 Der Grund für die Entscheidung den Preis in Cent anzugeben ist, dass es somit weit einfacher und Fehlerfreier ist Berechnungen durchzuführen. Die Entscheidung gegen Double ist durch mögliche Präzisionsprobleme zu erklären, die bereits bei elementaren Rechnungen auftreten könnten. Ein entsprechendes ERD-Diagram ist im Anhang zu finden (TODO).
+Um unsere Datenbank zu erstellen wurde das folgende ERD entworfen und verwendet um die Datenbank zu generieren.
+
+\begin{figure}[htp]
+\caption{ERD zur Datenbank}
+\includegraphics[width=1\textwidth]{ERD.png}\par\vspace{1cm}
+\end{figure}
+
 \subsection{Datenbankabfragen}
 
 \begin{figure}[!h]
