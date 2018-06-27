@@ -62,7 +62,6 @@ public class ViewAdapter extends BaseAdapter {
         viewHolder.textView = view.findViewById(R.id.tv);
         viewHolder.list = view.findViewById(R.id.list);
 
-        ArrayList<String> productList = new ArrayList<>();
         for (int i = 1; i < 11; i++) {
             TextView tv = new TextView(context);
             tv.setTextSize(20);
