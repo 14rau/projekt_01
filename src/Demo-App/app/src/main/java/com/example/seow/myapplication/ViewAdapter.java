@@ -1,11 +1,13 @@
 package com.example.seow.myapplication;
 
 import android.content.Context;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -61,10 +63,16 @@ public class ViewAdapter extends BaseAdapter {
         viewHolder.list = view.findViewById(R.id.list);
 
         ArrayList<String> productList = new ArrayList<>();
-        for (int i = 0; i < 10; i++)
-            productList.add("     Produkt " + String.valueOf(i));
+        for (int i = 1; i < 11; i++) {
+            TextView tv = new TextView(context);
+            tv.setTextSize(20);
+            tv.setGravity(Gravity.CENTER_HORIZONTAL);
+            tv.setLayoutParams(viewHolder.textView.getLayoutParams());
+            tv.setText(String.format("     Produkt %s", String.valueOf(i)));
+            viewHolder.list.addView(tv);
 
-        viewHolder.list.setAdapter(new ArrayAdapter<>(context, R.layout.fragment_products, R.id.tv, productList));
+        }
+
         viewHolder.textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -79,6 +87,6 @@ public class ViewAdapter extends BaseAdapter {
 
     private static class ViewHolder {
         TextView textView;
-        ListView list;
+        LinearLayout list;
     }
 }
