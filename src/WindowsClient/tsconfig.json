@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "moduleResolution": "node",
+		"module": "commonjs",
+        "target": "es5",
+		"jsx": "react",
+		"noUnusedLocals": true,
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "lib": [
+            "dom",
+            "es2016"
+        ]
+    }
+}

@@ -1,0 +1,420 @@
+.manamiButton{
+    user-select: none;
+    padding: 8px;
+    border-radius: 50%;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.manamiButton:hover{
+    background-color: #3E4551;
+    box-shadow:0 0 3px #3E4551;
+    transition: 0.4s;
+}
+
+.manamiButton:active{
+    background-color: #263238;
+    box-shadow:0 0 3px #263238;
+}
+
+.container{
+    padding-left: 0 !important;
+}
+
+.manamiMenuBarHeader{
+    width: 150px;
+    height: 150px;
+}
+
+.manamiMenuBar{
+    border-bottom: 1px solid #212121;
+    color: #ddd;
+    cursor: pointer;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transition: 0.1s;
+    border-left: 5px solid #2E2E2E;
+    user-select: none;
+}
+
+.manamiMenuBarLast{
+    border-bottom: 1px solid #212121;
+}
+
+.manamiMenuBar:hover{
+    color: #c0c0c0;
+    border-left-color: #42a5f5;
+    text-decoration: none;
+    
+}
+
+.profileColor{
+    background: #e8eaf6;
+}
+
+.manamuMenubar-muted{
+    border-bottom: 1px solid #212121;
+    user-select: none;
+    color: #9e9e9e;
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: 0.1s;
+    text-align: center;
+    padding-bottom: 10px;
+    font-variant: small-caps;
+    margin-bottom: 0;
+}
+
+.manamiMenuBar:active{
+    text-decoration: none;
+}
+
+.manamiMenuBar:visited{
+    text-decoration: none;
+}
+
+.manamiMenuBar:enabled{
+    text-decoration: none;
+}
+
+.notRound{
+    border-radius: 0;
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.fixHead > div{
+    top: 24px !important;
+}
+
+.fixHead > div > div{
+    overflow-y: hidden !important;
+}
+
+body {
+    padding: 0px !important;
+    margin: 0px !important; 
+}
+
+#title-bar {
+    -webkit-app-region: drag;
+    height: 24px; 
+    background-color: #212121;
+    padding: none;
+    margin: 0px; 
+}
+
+#title {
+    position: fixed;
+    top: 0px;
+    left: 6px;
+    color: #ddd;
+}
+
+#title-bar-btns {
+    -webkit-app-region: no-drag;
+    position: fixed;
+    top: 0px;
+    right: 6px;
+}
+
+.manamiTbBtn{
+    user-select: none;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.manamiTbBtn:hover{
+    background-color: #4285F4
+}
+
+.manamiTbBtnExit{
+    cursor: pointer;
+    user-select: none;
+    transition-duration: 0.2s;
+}
+
+.manamiTbBtnExit:hover{
+    background-color: #ff4444
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 4px;
+	background-color: #F5F5F5;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background-color: #2E2E2E;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.table-hover > tbody > tr:hover{
+    background: #c5cae9;
+}
+
+
+/* The animation code */
+@keyframes hide {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* The element to apply the animation to */
+.hideSideButton {
+    animation-name: hide;
+    animation-duration: 0.2s;
+}
+
+
+/* The animation code */
+@keyframes show {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+/* The element to apply the animation to */
+.showButton {
+    animation-name: show;
+    animation-duration: 0.2s;
+}
+
+
+
+
+/*!
+ * https://github.com/YouCanBookMe/react-datetime
+ */
+
+ .rdt {
+    position: relative;
+  }
+  .rdtPicker {
+    display: none;
+    position: absolute;
+    width: 250px;
+    padding: 4px;
+    margin-top: 1px;
+    z-index: 99999 !important;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    border: 1px solid #f9f9f9;
+  }
+  .rdtOpen .rdtPicker {
+    display: block;
+  }
+  .rdtStatic .rdtPicker {
+    box-shadow: none;
+    position: static;
+  }
+  
+  .rdtPicker .rdtTimeToggle {
+    text-align: center;
+  }
+  
+  .rdtPicker table {
+    width: 100%;
+    margin: 0;
+  }
+  .rdtPicker td,
+  .rdtPicker th {
+    text-align: center;
+    height: 28px;
+  }
+  .rdtPicker td {
+    cursor: pointer;
+  }
+  .rdtPicker td.rdtDay:hover,
+  .rdtPicker td.rdtHour:hover,
+  .rdtPicker td.rdtMinute:hover,
+  .rdtPicker td.rdtSecond:hover,
+  .rdtPicker .rdtTimeToggle:hover {
+    background: #eeeeee;
+    cursor: pointer;
+  }
+  .rdtPicker td.rdtOld,
+  .rdtPicker td.rdtNew {
+    color: #999999;
+  }
+  .rdtPicker td.rdtToday {
+    position: relative;
+  }
+  .rdtPicker td.rdtToday:before {
+    content: '';
+    display: inline-block;
+    border-left: 7px solid transparent;
+    border-bottom: 7px solid #428bca;
+    border-top-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 4px;
+    right: 4px;
+  }
+  .rdtPicker td.rdtActive,
+  .rdtPicker td.rdtActive:hover {
+    background-color: #428bca;
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  }
+  .rdtPicker td.rdtActive.rdtToday:before {
+    border-bottom-color: #fff;
+  }
+  .rdtPicker td.rdtDisabled,
+  .rdtPicker td.rdtDisabled:hover {
+    background: none;
+    color: #999999;
+    cursor: not-allowed;
+  }
+  
+  .rdtPicker td span.rdtOld {
+    color: #999999;
+  }
+  .rdtPicker td span.rdtDisabled,
+  .rdtPicker td span.rdtDisabled:hover {
+    background: none;
+    color: #999999;
+    cursor: not-allowed;
+  }
+  .rdtPicker th {
+    border-bottom: 1px solid #f9f9f9;
+  }
+  .rdtPicker .dow {
+    width: 14.2857%;
+    border-bottom: none;
+    cursor: default;
+  }
+  .rdtPicker th.rdtSwitch {
+    width: 100px;
+  }
+  .rdtPicker th.rdtNext,
+  .rdtPicker th.rdtPrev {
+    font-size: 21px;
+    vertical-align: top;
+  }
+  
+  .rdtPrev span,
+  .rdtNext span {
+    display: block;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;
+  }
+  
+  .rdtPicker th.rdtDisabled,
+  .rdtPicker th.rdtDisabled:hover {
+    background: none;
+    color: #999999;
+    cursor: not-allowed;
+  }
+  .rdtPicker thead tr:first-child th {
+    cursor: pointer;
+  }
+  .rdtPicker thead tr:first-child th:hover {
+    background: #eeeeee;
+  }
+  
+  .rdtPicker tfoot {
+    border-top: 1px solid #f9f9f9;
+  }
+  
+  .rdtPicker button {
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  .rdtPicker button:hover {
+    background-color: #eee;
+  }
+  
+  .rdtPicker thead button {
+    width: 100%;
+    height: 100%;
+  }
+  
+  td.rdtMonth,
+  td.rdtYear {
+    height: 50px;
+    width: 25%;
+    cursor: pointer;
+  }
+  td.rdtMonth:hover,
+  td.rdtYear:hover {
+    background: #eee;
+  }
+  
+  .rdtCounters {
+    display: inline-block;
+  }
+  
+  .rdtCounters > div {
+    float: left;
+  }
+  
+  .rdtCounter {
+    height: 100px;
+  }
+  
+  .rdtCounter {
+    width: 40px;
+  }
+  
+  .rdtCounterSeparator {
+    line-height: 100px;
+  }
+  
+  .rdtCounter .rdtBtn {
+    height: 40%;
+    line-height: 40px;
+    cursor: pointer;
+    display: block;
+  
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;
+  }
+  .rdtCounter .rdtBtn:hover {
+    background: #eee;
+  }
+  .rdtCounter .rdtCount {
+    height: 20%;
+    font-size: 1.2em;
+  }
+  
+  .rdtMilli {
+    vertical-align: middle;
+    padding-left: 8px;
+    width: 48px;
+  }
+  
+  .rdtMilli input {
+    width: 100%;
+    font-size: 1.2em;
+    margin-top: 37px;
+  }
+  
+  .rdtTime td {
+    cursor: default;
+  }
