@@ -174,7 +174,7 @@ export class App extends React.Component<IAppProps, any> {
 						<span className="" style={{color: "white", paddingLeft: "10px"}}>{this.page}</span>
 						<div style={{right: "0", position: "fixed", display: "flex", flexDirection: "row", alignItems: "baseline"}}>
 							{/*When there is a session token, show logout button*/}
-							{(global.sessionToken) && <span style={{color: "#ff4444"}} className="manamiButton notRound" onClick={() => this.logout()}><i className="fas fa-power-off"/></span>}
+							{<span style={{color: "#ff4444"}} className="manamiButton notRound" onClick={() => this.logout()}><i className="fas fa-power-off"/></span>}
 						</div>
 					</div>
 
