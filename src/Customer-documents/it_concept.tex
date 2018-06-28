@@ -1,0 +1,69 @@
+\documentclass{article}
+%% Language and font encodings
+\usepackage[english,german]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{multirow}
+\usepackage{listings}
+\usepackage{color}
+\pagenumbering{gobble}
+\usepackage{eurosym}
+\usepackage{xcolor}
+
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+
+\lstset{
+language=SQL,
+basicstyle=\ttfamily,
+keywordstyle=\color{violet},
+commentstyle=\color{gray},
+breaklines,
+frame=single,
+numbers=left,
+backgroundcolor=\color{yellow!10}
+}
+
+\begin{document}
+\begin{titlepage}
+	\centering
+	\includegraphics[width=0.5\textwidth]{itech.png}\par\vspace{1cm}
+	{\scshape\LARGE Projekt 01 \par}
+	\vspace{1cm}
+	{\scshape\small IT-Konzept\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Marktpersonal \par}
+    \vspace{0.5cm}
+    {\scshape\small Lager \par}
+	
+	\vspace{2cm}
+	{\Large\itshape Christian Rudolph, Artem Zheleznyakov, Felix Schulz, Patrick Rau\par}
+    \vspace{5cm}
+    \includegraphics[width=0.15\textwidth]{idk-tower.png}\par\vspace{0.15cm}
+    \textsc{IDK-Company}
+	\vfill
+	{\large \today\par}
+\end{titlepage}
+\tableofcontents
+\newpage
+\section{Das Problem}
+Die Baufuchs GmbH benötigt eine IT-Lösung zum Verwalten ihres Lagers und der Infopoints. Diese sollte auf die Bedürfnisse des Unternehmens zugeschnitten sein.\newline
+Der Kunde fordert eine schnelle und mobile Lösung um ihr Lagersystem optimal zu verwalten. Anbei hat der Kunde einen besonderen Lageraufbau: \newline Das Lager befindet sich auf den Verkaufsregalen. Dies rückt den Aspekt des Designs des mobilen Gerätes weiter in den Vordergrund. Außerdem soll es möglich sein, dass Kunden ebenfalls diese Geräte zur Findung der von ihnen gesuchten Produkte verwendet werden kann. Folglich spielt die Benutzbarkeit der auf dem Gerät installierten Software ebenfalls eine wichtige Rolle. So muss ein Betriebsystem verwendet werden, welches jedem Kunden geläufig ist. Damit die Geräte möglichst den gesammten Tag einsatzbereit sind, benötigen diese eine hohe Akkulaufzeit. Da die Kunden ebenfalls mit den Geräten in Kontakt kommen, hat der Schutz der mobilen Geräte eine hohe Priorität. Daraus folgt dass die Geräte jederzeit über GPS auffindbar sein müssen um den Verlust dieser zu vermeiden. Als Zusatzkriterien erwartet der Kunde entsprechend Taschen zum Verstauen der mobilen Geräte, wie auch Matten zum sicheren Ablegen dieser.
+
+\section{Die Idee}
+Durch diese spezifischen Anforderung an die Mobilität der Geräte ist es empfehlenswert Tablets zu verwenden. Neben der Bereitstellung und den Verkauf dieser Geräte möchten wir dem Kunden die entsprechende Software, aus eigener Entwicklung, anbieten die wir für Android und Windows entwickeln.
+
+\section{Durchführung der Idee}
+Als erstes wurde das optimale Tablet für den Kunden ausgewählt, welches auf seine Wünsche zugeschnitten ist. Dafür wurden drei Tablets miteinander verglichen und schlussendlich haben wir das \textsc{Sony Xperia Tablet Z SGP312} ausgewählt, da es ein schlankes und modernes Design besitzt, über eine lange Laufzeit verfügt und es mit dem Android OS 4 - Betriebssystem geliefert wird. Zusätzlich haben wir uns dazu entschlossen unsere auf Windows 8.1 optimierte Software ebenfalls für die interne Verwaltung anzubieten. Um sicherzustellen, dass die Geräte nicht entwendet werden können, werden die Tablets mit RFID-Tags ausgestattet damit ein spezifischer Alarm-Ton ertönt, wenn das Gerät das Geschäft verlassen sollte. Hierbei haben wir und gegen die Nutzung von GPS entschieden, um eine längere Akkulaufzeit zu erzielen. Jedes dieser Geräte wird zusätzlich mit einer Tasche, einer Tastatur wie einer zusätzlichen Schutzfolie und entsprechenden Gummimatte für jeden Gabelstalpler geliefert. Diese zusätzlichen Kosten befinden sich derzeit noch in Arbeit, können aber zeitnah geliefert werden. 
+\newline 
+Als benötigte Zeit für die vollständige Umsetzung des Projektes wird eine Dauer von etwa zwei Monaten angesetzt um eine möglichst hohe Zufriedenheit zu erzielen.\newline
+
+\end{document}
+
