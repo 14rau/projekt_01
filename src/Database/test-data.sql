@@ -49,10 +49,10 @@ VALUES ('Ersatzteillager',1);
 INSERT INTO product (location, designation_id)
 VALUES ('Ersatzteillager',1);
 
-INSERT INTO special_requirement (requirement)
+INSERT INTO special_requirements (requirement)
 VALUES ('sehr leise');
 
-INSERT INTO special_requirement (requirement)
+INSERT INTO special_requirements (requirement)
 VALUES ('niedriger Stromverbrauch');
 
 INSERT INTO product_seal 
@@ -61,11 +61,11 @@ VALUES (1,1);
 INSERT INTO product_seal 
 VALUES (2,1);
 
-INSERT INTO product_requirement
+INSERT INTO product_requirements
 VALUES (1,1);
 
-INSERT INTO product_requirement
+INSERT INTO product_requirements
 VALUES (1,2);
 
-INSERT INTO product_requirement
+INSERT INTO product_requirements
 VALUES (2,1);
